@@ -1,9 +1,12 @@
-import "./App.css";
+import SkipPage from "@/components/SkipPage";
+import PageWrapper from "@/layouts/PageWrapper";
 
 function App() {
   return (
     <div>
-      <h1 className="bg-red-300">Vite + React</h1>
+      <PageWrapper>
+        <SkipPage />
+      </PageWrapper>
     </div>
   );
 }
