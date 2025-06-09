@@ -11,7 +11,6 @@ function useFetchSkips(url: string) {
   const fetch = async () => {
     const skipData = await axios.get(url);
     if (skipData.status == 200) {
-      console.log("skipdata", skipData);
       setData(skipData.data);
       return;
     }

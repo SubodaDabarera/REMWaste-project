@@ -13,6 +13,7 @@ interface Skip {
   transport_cost: number;
   updated_at: Date;
   vat: number;
+  image: string;
 }
 
 export type { Skip };
