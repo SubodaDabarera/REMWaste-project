@@ -10,4 +10,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'), // Map '@' to './src'
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://clicks.aweber.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  }
 })
