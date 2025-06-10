@@ -1,18 +1,17 @@
 import useFetchSkips from "@/hooks/useFetchSkips";
 import type { Skip } from "@/types/Skip";
-import { useState } from "react";
 import SkipCard from "@/components/SkipCard";
+import { useSkipContext } from "@/contexts/skipContext";
 
 const SKIP_API =
   "/api/y/ct/?l=XDl3Kn&m=8kKiA5Xs4lyuOBlr&b=LN4zdPOCY2wffjE5vH.B0w";
 
 function SkipPage() {
-  const { data: skips } = useFetchSkips(SKIP_API);
+  const { data: skips, loading: skipLoading } = useFetchSkips(SKIP_API);
+  const { selectedSkip, setSelectedSkip } = useSkipContext();
 
-  const [selectedSkip, setSelectedSkip] = useState(0);
-
-  const handleSkipSelect = (skip_id: number) => {
-    setSelectedSkip(skip_id);
+  const handleSkipSelect = (skip: Skip) => {
+    setSelectedSkip((prev: Skip | null) => (prev?.id == skip.id ? null : skip));
   };
 
   return (
@@ -26,11 +25,12 @@ function SkipPage() {
           <div
             key={skip.id}
             className="flex flex-col"
-            onClick={() => handleSkipSelect(skip.id)}
+            onClick={() => handleSkipSelect(skip)}
           >
             <SkipCard selectedSkip={selectedSkip} data={skip} />
           </div>
         ))}
+        <div>{skipLoading && <div>Loading</div>}</div>
       </div>
     </div>
   );
