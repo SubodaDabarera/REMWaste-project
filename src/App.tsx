@@ -1,12 +1,17 @@
 import SkipPage from "@/components/SkipPage";
 import PageWrapper from "@/layouts/PageWrapper";
+import ActionBar from "@/components/ActionBar";
+import { SkipProvider } from "@/contexts/skipContext";
 
 function App() {
   return (
     <div>
-      <PageWrapper>
-        <SkipPage />
-      </PageWrapper>
+      <SkipProvider>
+        <PageWrapper>
+          <SkipPage />
+          <ActionBar />
+        </PageWrapper>
+      </SkipProvider>
     </div>
   );
 }
