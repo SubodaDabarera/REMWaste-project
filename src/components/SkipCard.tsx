@@ -1,10 +1,10 @@
 import React from "react";
-import SKIP_IMG from "../../public/skip_img.png";
+import SKIP_IMG from "@/assets/skip_img.png";
 import classNames from "classnames";
 import type { Skip } from "@/types/Skip";
 
 interface Props {
-  selectedSkip: any;
+  selectedSkip: Skip | null;
   data: Skip;
 }
 
@@ -14,10 +14,8 @@ function SkipCard({ selectedSkip, data }: Props) {
   return (
     <div
       className={classNames(
-        selectedSkip == data.id
-          ? "bg-orange-500 border-yellow-500"
-          : "border-orange-500",
-        "relative flex-shrink-0 m-3 max-w-xs overflow-hidden rounded-lg shadow-lg border-2 transition-all"
+        selectedSkip?.id == data.id ? "bg-orange-500" : "",
+        "relative flex-shrink-0 m-3 max-w-xs overflow-hidden rounded-lg shadow-lg border-2 border-orange-500 transition-all"
       )}
     >
       <svg
@@ -47,13 +45,12 @@ function SkipCard({ selectedSkip, data }: Props) {
       <div className="absolute right-3 top-2">Container</div>
       <div className="relative pt-8 px-6 flex items-center justify-center">
         <div
-          className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"
+          className="absolute w-48 h-48 bottom-0 left-0 -mb-20 ml-6"
           style={{
-            background: "radial-gradient(black, transparent 60%)",
-            transform:
-              "rotate3d(0, 0, 1, 20deg) scale3d(1, 0.3, 1); opacity: 0.2;",
+            background: "radial-gradient(black, transparent 70%)",
+            opacity: "0.4",
           }}
-        ></div>
+        />
         <img className="relative w-56" src={SKIP_IMG} alt="" />
       </div>
       <div className="relative text-white px-6 pb-6 mt-6">
