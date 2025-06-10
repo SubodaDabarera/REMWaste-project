@@ -17,8 +17,10 @@ function SkipPage() {
 
   return (
     <div className="mb-10">
-      <div className="mb-5">
-        <h2 className="text-3xl font-bold">Choose Your Skip</h2>
+      <div className="mb-10">
+        <h2 className="mb-2 md:text-4xl text-2xl font-bold">
+          Choose Your Skip
+        </h2>
         <span>Select the skip size that best suits your needs</span>
       </div>
 
