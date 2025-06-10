@@ -2,6 +2,7 @@ import useFetchSkips from "@/hooks/useFetchSkips";
 import type { Skip } from "@/types/Skip";
 import SkipCard from "@/components/SkipCard";
 import { useSkipContext } from "@/contexts/skipContext";
+import LoadingVIew from "./LoadingVIew";
 
 const SKIP_API =
   "/api/y/ct/?l=XDl3Kn&m=8kKiA5Xs4lyuOBlr&b=LN4zdPOCY2wffjE5vH.B0w";
@@ -15,11 +16,12 @@ function SkipPage() {
   };
 
   return (
-    <div>
-      <h2 className="text-3xl font-bold">Select Your Skip</h2>
-      <span>Select a skip that suits to your usecase</span>
+    <div className="mb-10">
+      <div className="mb-5">
+        <h2 className="text-3xl font-bold">Choose Your Skip</h2>
+        <span>Select the skip size that best suits your needs</span>
+      </div>
 
-      {/* Card container */}
       <div className="grid justify-center grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full">
         {skips.map((skip: Skip) => (
           <div
@@ -30,8 +32,8 @@ function SkipPage() {
             <SkipCard selectedSkip={selectedSkip} data={skip} />
           </div>
         ))}
-        <div>{skipLoading && <div>Loading</div>}</div>
       </div>
+      {skipLoading && <LoadingVIew />}
     </div>
   );
 }
