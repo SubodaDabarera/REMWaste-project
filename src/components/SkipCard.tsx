@@ -8,14 +8,20 @@ interface Props {
   data: Skip;
 }
 
-function SkipCard({ selectedSkip, data }: Props) {
-  console.log("data", data);
+const NotAllowFlag = ({ text } : any) => {
+  return (
+    <div className="bg-red-800 text-sm py-0.5 px-2 rounded-full w-fit">
+      {text}
+    </div>
+  );
+};
 
+function SkipCard({ selectedSkip, data }: Props) {
   return (
     <div
       className={classNames(
         selectedSkip?.id == data.id ? "bg-orange-500" : "",
-        "relative flex-shrink-0 m-3 max-w-xs overflow-hidden rounded-lg shadow-lg border-2 border-orange-500 transition-all"
+        "relative flex-shrink-0 max-w-xs overflow-hidden cursor-pointer rounded-lg shadow-lg border-2 border-orange-500 transition-all"
       )}
     >
       <svg
@@ -42,8 +48,15 @@ function SkipCard({ selectedSkip, data }: Props) {
           fill="white"
         />
       </svg>
-      <div className="absolute right-3 top-2">Container</div>
-      <div className="relative pt-8 px-6 flex items-center justify-center">
+      <div className="absolute right-2 top-2 flex flex-col items-end gap-1">
+        {!data.allowed_on_road && (
+          <NotAllowFlag text={"Not Allowed on the Roads"} />
+        )}
+        {!data.allows_heavy_waste && (
+          <NotAllowFlag text={"Not allowed Heavy Weight"} />
+        )}
+      </div>
+      <div className="relative pt-14 px-6 flex items-center justify-center">
         <div
           className="absolute w-48 h-48 bottom-0 left-0 -mb-20 ml-6"
           style={{

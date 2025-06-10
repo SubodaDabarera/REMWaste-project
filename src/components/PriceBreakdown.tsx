@@ -1,10 +1,6 @@
-import type { Skip } from "@/types/Skip";
-import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
-
-function PriceBreakdown({ selectedSkip }: Skip) {
+function PriceBreakdown({ selectedSkip } : any) {
   return (
-    <div className="pt-3">
+    <div className="pb-2">
       <div className="flex justify-between">
         <span className="text-white/80">Skip price:</span>
         <span className="text-white">${selectedSkip?.price_before_vat}</span>
